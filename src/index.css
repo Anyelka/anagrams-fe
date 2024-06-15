@@ -1,13 +1,163 @@
+@font-face {
+  font-family: "moderna"; /*Can be any text*/
+  src: local("Moderna"),
+    url("./resources/zillah/ZILLMT__.ttf") format("truetype");
+}
+
+:root {
+  --neon-green: #00ff88; /* rgb(0, 255, 135); */
+  --green: #00db74;
+  --dark-purple: #37003c;
+  --dark-lighter-purple: #7f3985;
+  --pink: #ff2882;
+  --red: #e0005e;
+  --light-blue: #05f0ff;
+  --light-darker-blue-2: #2dbdff;
+  --light-darker-blue: #00c0cf;
+  --viola: #7367ff;
+  --purple: #963cff;
+  --light-gold: #fbff00;
+  --gold: #d4c300;
+  --dark-gold: #a08c6e;
+  --grey: #414141;
+  --orange: #ff6200;
+  --light-orange: #ffa600;
+
+  --orange-gradient: linear-gradient(
+    115deg,
+    var(--orange) 35%,
+    var(--light-orange) 70%
+  );
+  --blue-purple-gradient: linear-gradient(
+    137.27deg,
+    var(--light-blue) 19.85%,
+    var(--viola) 91.08%,
+    var(--purple) 113.26%
+  );
+  --green-blue-gradient: linear-gradient(
+    115deg,
+    var(--neon-green) 11%,
+    var(--light-blue) 68%
+  );
+  --gold-gradient: linear-gradient(
+    137.27deg,
+    var(--gold) 19.85%,
+    var(--dark-gold) 91.08%,
+    var(--light-gold) 113.26%
+  );
+  --red-purple-gradient: linear-gradient(
+    245.98deg,
+    #ff6900 -48.99%,
+    #ff6604 -32.53%,
+    #ff6010 -14.01%,
+    #ff5625 4.51%,
+    #ff4743 23.03%,
+    #ff3468 41.55%,
+    #ff2882 53.89%,
+    #963cff 156.77%
+  );
+}
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: "Courier New", Courier, monospace;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+.App {
+  width: 100vw;
+  height: 100vh;
+  background: var(--green-blue-gradient);
+}
+
+.container {
+  position: absolute;
+
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+.left-side-container {
+}
+
+.input-form {
+  display: flex;
+  justify-content: center;
+}
+
+.text-inputs {
+  display: flex;
+  flex-direction: column;
+}
+
+.text-input {
+  width: 300px;
+  height: 50px;
+  margin: 5px 10px 5px 10px;
+  /* border-radius: 40px; */
+  border: none;
+  font-size: 4vh;
+  text-align: center;
+
+  background-color: var(--grey);
+  font-family: moderna;
+  color: var(--light-gold);
+}
+
+.submit-button {
+  width: 120px;
+  height: 120px;
+  margin-top: auto;
+  margin-bottom: auto;
+  /* border-radius: 40px; */
+  border: none;
+
+  background-color: var(--light-gold);
+  cursor: pointer;
+}
+
+.submit-button-image {
+  width: 100%;
+  height: 100%;
+}
+
+.result {
+  margin: auto;
+  width: 400px;
+  border-radius: 20px;
+  padding: 5px 10px 5px 10px;
+}
+
+.right-side-container {
+  position: absolute;
+  top: 0;
+  left: 450px;
+}
+
+ul {
+  text-align: left;
+  list-style-type: none;
+}
+
+li {
+  white-space: nowrap;
+}
+
+.word-entry {
+  font-size: 4vh;
+  font-family: moderna;
+  color: var(--dark-purple);
+  cursor: pointer;
+}
+
+.no-anagrams {
+  color: "red";
 }
