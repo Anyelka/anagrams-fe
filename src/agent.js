@@ -15,8 +15,11 @@ const requestProps = (data, url) => {
 };
 
 const anagramsProps = (text1, text2) => {
-  return requestProps({ text1, text2 }, "http://localhost:8080");
-  /* return requestProps({ text1, text2 }, "https://europe-west3-anagrams-426317.cloudfunctions.net/anagrams-cloud"); */
+  /* return requestProps({ text1, text2 }, "http://localhost:8080"); */
+  return requestProps(
+    { text1, text2 },
+    "https://europe-west3-anagrams-426317.cloudfunctions.net/anagrams-cloud"
+  );
 };
 
 export const getAnagrams = async (text1, text2) => {
@@ -30,7 +33,11 @@ export const getAnagrams = async (text1, text2) => {
 };
 
 const allAnagramsProps = (text, texts) => {
-  return requestProps({ text, texts }, "http://localhost:8081");
+  /* return requestProps({ text, texts }, "http://localhost:8081"); */
+  return requestProps(
+    { text, texts },
+    "https://europe-west3-anagrams-426317.cloudfunctions.net/anagrams-cloud-2"
+  );
 };
 
 export const getAllAnagrams = async (text, texts) => {

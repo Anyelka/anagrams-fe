@@ -5,8 +5,19 @@ import { motion, useAnimationControls } from "framer-motion";
 import Words from "./components/Words";
 import { getAnagrams } from "./agent";
 
+const invalidInputVariant = {
+  border: "3px solid red",
+  color: "red",
+  x: [0, 5, 0, -5, 0, 5, 0, -5, 0, 5, 0, -5, 0],
+  transition: {
+    duration: 0.5,
+  },
+};
+
 function App() {
   const resultControls = useAnimationControls();
+  const input1Controls = useAnimationControls();
+  const input2Controls = useAnimationControls();
 
   const [text1, setText1] = useState("");
   const [text2, setText2] = useState("");
@@ -22,8 +33,33 @@ function App() {
     newWords.length > 0 && setWords([...words, ...newWords]);
   };
 
+  const handleText1Change = (e) => {
+    setText1(e.target.value);
+    input1Controls.start({
+      border: "0px",
+      color: "#00ff88",
+    });
+  };
+
+  const handleText2Change = (e) => {
+    setText2(e.target.value);
+    input2Controls.start({
+      border: "0px",
+      color: "#00ff88",
+    });
+  };
+
   const handleSubmit = async (event) => {
     event.preventDefault();
+    if (text1.length === 0 || text2.length === 0) {
+      if (text1.length === 0) {
+        input1Controls.start(invalidInputVariant);
+      }
+      if (text2.length === 0) {
+        input2Controls.start(invalidInputVariant);
+      }
+      return;
+    }
     initialized && (await resultControls.start({ scale: 0 }));
 
     const response = await getAnagrams(text1, text2);
@@ -45,22 +81,24 @@ function App() {
             layout
           >
             <div id="text-inputs" class="text-inputs">
-              <input
+              <motion.input
                 title="Text1"
                 type="text"
                 class="text-input"
                 value={text1}
-                onChange={(e) => setText1(e.target.value)}
+                onChange={handleText1Change}
                 placeholder="first text"
-              ></input>
-              <input
+                animate={input1Controls}
+              ></motion.input>
+              <motion.input
                 title="Text2"
                 type="text"
                 class="text-input"
                 value={text2}
-                onChange={(e) => setText2(e.target.value)}
+                onChange={handleText2Change}
                 placeholder="second text"
-              ></input>
+                animate={input2Controls}
+              ></motion.input>
             </div>
             <motion.button
               type="submit"
