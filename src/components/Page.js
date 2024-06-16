@@ -1,9 +1,8 @@
-import "./App.css";
 import { useState } from "react";
-import arrow from "./resources/arrow.png";
+import arrow from "../resources/arrow.png";
 import { motion, useAnimationControls } from "framer-motion";
-import Words from "./components/Words";
-import { getAnagrams } from "./agent";
+import Words from "./Words";
+import { getAnagrams } from "../agent";
 
 const invalidInputVariant = {
   border: "3px solid red",

@@ -1,9 +1,4 @@
 import "./App.css";
-import { useState } from "react";
-import arrow from "./resources/arrow.png";
-import { motion, useAnimationControls } from "framer-motion";
-import Words from "./components/Words";
-import { getAnagrams } from "./agent";
 import Page from "./components/Page";
 
 // Import the functions you need from the SDKs you need
