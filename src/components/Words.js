@@ -55,18 +55,23 @@ const Words = ({ words }) => {
     if (otherWordOpen(word)) {
       return;
     }
+    const open = wordOpen === word;
     return (
       <>
         <motion.li
           initial={{ y: -20, scale: 0 }}
           animate={{ y: 0, scale: 1 }}
           className="word-entry"
-          whileHover={{ backgroundColor: "#fbff00" }}
+          whileHover={
+            open
+              ? { backgroundColor: "#ffa600" }
+              : { backgroundColor: "#fbff00" }
+          }
           onClick={() => toggle(word)}
           layout
         >
           <AnimatePresence>
-            {wordOpen === word && (
+            {open && (
               <motion.img
                 src={arrow}
                 initial={{ scaleX: 0 }}
@@ -78,7 +83,7 @@ const Words = ({ words }) => {
 
           {word}
         </motion.li>
-        {wordOpen === word && renderAnagrams(word)}
+        {open && renderAnagrams(word)}
       </>
     );
   };
